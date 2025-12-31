@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="landing-hero">
+    <h1 class="landing-title">UFO Predictor</h1>
+    <p class="landing-subtitle">Where are you seeing your next alien?</p>
+    <a href="{{ url_for('prediction_form') }}" class="btn landing-btn ripple-btn">
+        Start Prediction
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.5rem;">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+    </a>
+</div>
+
+<script src="{{ url_for('static', filename='js/components/button.js') }}"></script>
+{% endblock %}

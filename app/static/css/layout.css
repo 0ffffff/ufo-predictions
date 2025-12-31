@@ -1,0 +1,18 @@
+.grid {
+    width: 90%;
+    max-width: 800px;
+    display: grid;
+    margin: 20px auto;
+    gap: 1.5rem;
+    border: none;
+}
+
+.box {
+    color: #fff;
+    background-color: #1a1a1d;
+    padding: 1.5rem;
+    display: block;
+    border: 1px solid #27272a;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}

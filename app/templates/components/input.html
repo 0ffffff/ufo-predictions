@@ -1,0 +1,8 @@
+{% macro input(name, placeholder, type='text', required=False, min=None, max=None) %}
+<div class="input-group">
+    <label for="{{ name }}" class="input-label">{{ placeholder }}</label>
+    <input type="{{ type }}" name="{{ name }}" id="{{ name }}" class="shadcn-input" placeholder="{{ placeholder }}" {%
+        if required %}required{% endif %} {% if min is not none %}min="{{ min }}" {% endif %} {% if max is not none
+        %}max="{{ max }}" {% endif %} />
+</div>
+{% endmacro %}

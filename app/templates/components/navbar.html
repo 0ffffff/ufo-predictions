@@ -1,0 +1,10 @@
+<nav>
+    <div class="nav-content">
+        <a href="{{ url_for('landing') }}" class="logo-btn">
+            <img src="{{ url_for('static', filename='images/icon.png') }}" class="logo" alt="UFO Predictor Logo">
+        </a>
+        <a href="{{ url_for('prediction_form') }}"
+            class="{% if request.endpoint in ['prediction_form', 'predict'] %}active{% endif %}">Predict</a>
+        <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a>
+    </div>
+</nav>

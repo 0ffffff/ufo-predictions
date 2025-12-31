@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid">
+
+  <div class="box">
+
+    <p>According to the number of seconds, latitude and longitude, which country is likely to have reported seeing a
+      UFO?</p>
+
+    {% from 'components/input.html' import input %}
+
+    <form action="{{ url_for('predict') }}" method="post">
+      <div class="form-row">
+        {{ input('seconds', 'Seconds', type='number', required=True, min=0, max=60) }}
+        {{ input('latitude', 'Latitude', type='text', required=True) }}
+        {{ input('longitude', 'Longitude', type='text', required=True) }}
+      </div>
+
+      <button type="submit" class="btn">Predict!</button>
+    </form>
+
+    {% if country %}
+    <div class="prediction-result">
+      <p>{{ prediction_text }}</p>
+      <h3>{{ country }}</h3>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <div class="box">
+    <h3>How to use</h3>
+    <p>To predict the country of a UFO sighting, enter the duration in seconds (0-60) and the geographical coordinates
+      (latitude and longitude) of the event. Our model will analyze the input to determine the most likely reporting
+      country.</p>
+    <p>For example, if you enter 30 seconds, 40.7128 latitude, and -74.0060 longitude, the model will predict that the
+      UFO sighting is most likely to have been reported in the United States.</p>
+  </div>
+
+  <div class="box">
+    <h3>Model</h3>
+    <p>Our model is a logistic regression model that was trained on a dataset of UFO sightings. The model takes the
+      duration in seconds and the geographical coordinates (latitude and longitude) of the event as input and outputs
+      the most likely reporting country.</p>
+    <p>The model was trained using scikit-learn and the dataset was obtained from the UFO Sightings dataset on Kaggle.
+    </p>
+  </div>
+
+</div>
+{% endblock %}

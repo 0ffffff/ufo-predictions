@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}About - UFO Appearance Prediction{% endblock %}
+
+{% block content %}
+<div class="grid">
+    <div class="box">
+        <h1>About the Model</h1>
+        <p>
+            This application uses a Logistic Regression model to predict the country where a UFO sighting might occur
+            based on the duration of the sighting and the geographical coordinates (latitude and longitude).
+        </p>
+        <p>
+            The model was trained on historical UFO sighting data.
+        </p>
+    </div>
+
+    <div class="box">
+        <h1>About the ___</h1>
+        <p>
+            Add content later
+        </p>
+        <p>
+            gnarly do do do do
+        </p>
+    </div>
+
+    <div class="box">
+        <h3>Made with:</h3>
+        <div class="tech-stack">
+            <div class="tech-item">
+                <img src="{{ url_for('static', filename='images/flask_logo.png') }}" alt="Flask"><br>Flask
+            </div>
+            <div class="tech-item">
+                <img src="{{ url_for('static', filename='images/scikit-learn_logo.png') }}"
+                    alt="Scikit-learn"><br>Scikit-learn
+            </div>
+            <div class="tech-item">
+                <img src="{{ url_for('static', filename='images/pandas_logo.png') }}" alt="Pandas"><br>Pandas
+            </div>
+            <div class="tech-item">
+                <img src="{{ url_for('static', filename='images/numpy_logo.png') }}" alt="Numpy"><br>Numpy
+            </div>
+        </div>
+    </div>
+
+    <p>
+        <a href="{{ url_for('landing') }}" class="btn">Back to Home</a>
+    </p>
+</div>
+{% endblock %}
