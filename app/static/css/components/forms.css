@@ -2,7 +2,6 @@ input {
     min-width: 150px;
 }
 
-/* Shadcn-like Input Styling */
 .input-group {
     display: flex;
     flex-direction: column;
@@ -31,7 +30,6 @@ input {
     color: #fff;
     transition: all 0.2s;
     box-sizing: border-box;
-    /* Ensure padding doesn't affect width */
 }
 
 .shadcn-input:focus {
@@ -44,7 +42,6 @@ input {
     color: #52525b;
 }
 
-/* Button Update to match */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -67,7 +64,6 @@ input {
     background-color: #e4e4e7;
 }
 
-/* Responsive Form Layout */
 .form-row {
     display: flex;
     flex-direction: column;
@@ -83,12 +79,10 @@ input {
 
     .input-group {
         margin-bottom: 0;
-        /* Let gap handle spacing in row */
         flex: 1;
     }
 }
 
-/* Prediction Result Styling */
 .prediction-result {
     text-align: center;
     margin-top: 2rem;

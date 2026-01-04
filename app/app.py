@@ -30,5 +30,4 @@ def predict():
     return render_template("index.html", prediction_text="Predicted sighting in:", country=country)
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    print(f"Running on port {app.url_map}") # remove once pushed to github
+    app.run()

@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.style.left = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
-    canvas.style.zIndex = '-1'; // Behind everything
-    canvas.style.pointerEvents = 'none'; // Don't block clicks
+    canvas.style.zIndex = '-1';
+    canvas.style.pointerEvents = 'none';
 
     document.body.appendChild(canvas);
 
@@ -86,10 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
 
-    // Start Animation Loop
     animate();
 
-    // Handle resize
     window.addEventListener('resize', () => {
         resizeCanvas();
         createStars();
