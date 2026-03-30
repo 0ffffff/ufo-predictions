@@ -1,138 +1,126 @@
-# 🛸 UFO Sighting Predictor
+# UFO Sighting Predictor
 
-A machine learning-powered web application that predicts the country where a UFO sighting was most likely reported based on duration, latitude, and longitude data.
+A machine learning web app that predicts which country a UFO sighting was most likely reported in, using duration (seconds), latitude, and longitude.
 
 ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 
-## 📋 Overview
+## Overview
 
-This web application uses a trained logistic regression model to predict which country a UFO sighting was reported in, based on three key features:
-- **Duration** (in seconds, 0-60)
-- **Latitude** (geographical coordinate)
-- **Longitude** (geographical coordinate)
+The app serves a **logistic regression** model trained in `train.ipynb`. Inputs are:
 
-The model can predict sightings from **5 countries**: Australia, Canada, Germany, United Kingdom, and United States.
+- **Duration** in seconds (training data uses sightings between **1 and 60** seconds, inclusive)
+- **Latitude** and **longitude**
 
-## ✨ Features
+The model predicts one of **five** countries: Australia, Canada, Germany, United Kingdom, and United States. Class labels follow scikit-learn `LabelEncoder` ordering on the ISO-style country codes in the dataset (`au`, `ca`, `de`, `gb`, `us`), which matches the ordered list used in `app/app.py`.
 
-- 🌐 **Interactive Web Interface**: Clean, modern UI with gradient text effects and smooth animations
-- 🤖 **Machine Learning Prediction**: Trained logistic regression model using scikit-learn
-- 📊 **Real-time Results**: Instant predictions based on user input
-- 📱 **Responsive Design**: Works seamlessly across desktop and mobile devices
-- ℹ️ **Educational Content**: Includes information about the model and how to use it
+## Features
 
-## 🛠️ Technologies Used
+- Web UI for entering coordinates and duration and viewing the predicted country
+- Pretrained model loaded from `model/ufo-model.pkl`
+- Responsive layout and `/`, `/prediction`, and `/about` routes
+
+## Technologies
 
 ### Backend
-- **Python 3.x**: Core programming language
-- **Flask**: Lightweight web framework for routing and serving the application
-- **scikit-learn**: Machine learning library for model training and prediction
-- **NumPy**: Numerical computing library for array operations
-- **Pandas**: Data manipulation and analysis
+
+- **Python 3.x**
+- **Flask** for HTTP routing and templates
+- **scikit-learn** for inference (and training in the notebook)
+- **NumPy** for feature vectors
+- **Pandas** for training data prep in the notebook
 
 ### Frontend
-- **HTML5**: Semantic markup structure
-- **CSS3**: Modern styling with gradients, animations, and glassmorphism effects
-- **JavaScript**: Interactive button effects and dynamic user interactions
-- **Google Fonts**: Inter and Playfair Display for premium typography
 
-### Machine Learning
-- **Model**: Logistic Regression classifier
-- **Training Data**: UFO Sightings dataset from Kaggle
-- **Features**: Duration (seconds), Latitude, Longitude
-- **Target**: Country of reported sighting (5 classes)
+- HTML templates under `app/templates/`
+- CSS and JavaScript under `app/static/`
+- **Google Fonts** (Inter and Playfair Display)
 
-## 📁 Project Structure
+### Machine learning
+
+- **Algorithm**: logistic regression (`solver='lbfgs'`, `max_iter=1000` in the notebook)
+- **Data**: Kaggle-style UFO sightings CSV (see `data/raw/ufos.csv`)
+- **Features**: seconds, latitude, longitude
+- **Target**: country (multiclass)
+
+## Project structure
 
 ```
 ufo-webapp/
 ├── app/
-│   ├── app.py                 # Main Flask application
-│   ├── requirements.txt       # Python dependencies
-│   ├── static/
-│   │   ├── css/              # Stylesheets (global, layout, components)
-│   │   └── js/               # JavaScript components (buttons, background)
-│   └── templates/            # HTML templates (base, landing, index, about)
+│   ├── app.py              # Flask app (loads ../model/ufo-model.pkl)
+│   ├── requirements.txt
+│   ├── static/             # CSS, JS, images
+│   └── templates/          # base, landing, index, about, components
 ├── model/
-│   └── ufo-model.pkl         # Trained ML model (pickled)
+│   └── ufo-model.pkl       # Pickled sklearn model (run train.ipynb to regenerate)
 ├── data/
-│   └── raw/                  # Raw dataset storage
-├── train.ipynb               # Jupyter notebook for model training
-└── README.md                 # This file
+│   └── raw/
+│       └── ufos.csv        # Training CSV (used by train.ipynb)
+├── train.ipynb             # Training notebook
+└── README.md
 ```
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
+
 - Python 3.7 or higher
-- pip (Python package manager)
+- pip
 
-### Step-by-Step Setup
+### Setup
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd ufo-webapp
-   ```
+1. Clone the repository and enter the project directory.
 
-2. **Create a virtual environment** (recommended)
+2. Create and activate a virtual environment (recommended):
+
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate   # Windows: venv\Scripts\activate
    ```
 
-3. **Install dependencies**
+3. Install app dependencies:
+
    ```bash
    cd app
    pip install -r requirements.txt
    ```
 
-## ▶️ Running the Application
+To run `train.ipynb`, install the same stack plus **matplotlib** (and Jupyter) in that environment, or add them ad hoc for the notebook.
 
-1. **Navigate to the app directory**
+## Running the app
+
+1. From the repository root:
+
    ```bash
    cd app
-   ```
-
-2. **Start the Flask development server**
-   ```bash
    python app.py
    ```
 
-3. **Open your browser** and navigate to:
-   ```
-   http://127.0.0.1:5000
-   ```
+2. Open `http://127.0.0.1:5000` (Flask default).
 
-4. **Use the application**
-   - Visit the landing page at `/`
-   - Navigate to the prediction form at `/prediction`
-   - Enter duration (seconds), latitude, and longitude
-   - Click "Predict!" to see which country the sighting likely occurred in
+3. Routes:
 
-## 📖 Usage Example
+   - `/` — landing page
+   - `/prediction` — form (POSTs to `/predict`)
+   - `/about` — model and project notes
 
-To predict a UFO sighting in New York City:
+## Usage example
 
-1. Navigate to `/prediction`
-2. Enter the following values:
-   - **Seconds**: `30`
-   - **Latitude**: `40.7128`
-   - **Longitude**: `-74.0060`
-3. Click **Predict!**
-4. Result: **United States** 🇺🇸
+Example inputs for a New York City area point:
 
-## 🧠 Model Training
+1. Go to `/prediction`.
+2. Enter **Seconds**: `30`, **Latitude**: `40.7128`, **Longitude**: `-74.0060`.
+3. Submit the form.
+4. The app should predict **United States** (coordinates are highly informative for this task).
 
-The model was trained using the `train.ipynb` Jupyter notebook. To retrain the model:
+## Retraining the model
 
-1. Open `train.ipynb` in Jupyter Notebook or JupyterLab
-2. Ensure the UFO sightings dataset is in the `data/raw/` directory
-3. Run all cells to train the logistic regression model
-4. The trained model will be saved as `model/ufo-model.pkl`
+1. Open `train.ipynb` in Jupyter or VS Code. **Run it with the working directory set to the repository root** so `data/raw/ufos.csv` and `model/ufo-model.pkl` resolve correctly.
+2. Run all cells. The notebook filters rows (non-null country, duration between 1 and 60 seconds), encodes countries, trains logistic regression, evaluates on a test split, and writes **`model/ufo-model.pkl`**.
+3. Restart the Flask app if it is already running so it picks up a replaced model file.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-Thank you to my parents for always believing in me :D
+Thanks to the Kaggle UFO sightings dataset contributors. Personal thanks to family for support on this project.
