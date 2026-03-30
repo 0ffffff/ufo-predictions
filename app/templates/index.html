@@ -23,7 +23,7 @@
 
     {% if country %}
     <div class="prediction-result">
-      <p>Prediction result</p>
+      <p>{{ prediction_text or 'Prediction result' }}</p>
       <h3>{{ country }}</h3>
     </div>
     {% endif %}

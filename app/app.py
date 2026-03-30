@@ -19,12 +19,27 @@ def about():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
+    try:
+        features = [float(x) for x in request.form.values()]
+    except ValueError:
+        return render_template(
+            "index.html",
+            prediction_text="Invalid input. Use numeric values for all fields.",
+            country="Please check your values and try again.",
+        ), 400
+
+    final_features = [np.array(features)]
     prediction = model.predict(final_features)
-    output = prediction[0]
+    output = int(prediction[0])
 
     countries = ['Australia', 'Canada', 'Germany', 'United Kingdom', 'United States']
+    if output < 0 or output >= len(countries):
+        return render_template(
+            "index.html",
+            prediction_text="Model returned an unexpected class index.",
+            country="Prediction unavailable right now.",
+        ), 500
+
     country = countries[output]
 
     return render_template("index.html", prediction_text="Predicted sighting in:", country=country)
