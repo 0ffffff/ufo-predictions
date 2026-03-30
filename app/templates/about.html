@@ -3,28 +3,34 @@
 {% block title %}About - UFO Appearance Prediction{% endblock %}
 
 {% block content %}
-<div class="grid">
-    <div class="box">
-        <h1>About the Model</h1>
+<div class="grid about-grid">
+    <div class="box" data-reveal>
+        <span class="eyebrow">Model Brief</span>
+        <h1>About the model</h1>
         <p>
-            This application uses a Logistic Regression model to predict the country where a UFO sighting might occur based on the duration of the sighting and the geographical coordinates (latitude and longitude).
+            This application uses a Logistic Regression model to predict the country where a UFO sighting might occur,
+            based on duration and geographic coordinates.
         </p>
         <p>
-            The model was trained on historical UFO sighting data comprising 80,000+ lines, sourced from Kaggle. After training, the model achieved an accuracy of 97% on a test set of 20,000+ lines.
-        </p>
-    </div>
-
-    <div class="box">
-        <h1>About the Team</h1>
-        <p>
-            Add content later
-        </p>
-        <p>
-            gnarly do do do do
+            The model was trained on historical UFO sighting data containing 80,000+ records from Kaggle and reached
+            97% accuracy on a 20,000+ sample test split.
         </p>
     </div>
 
-    <div class="box">
+    <div class="box" data-reveal>
+        <span class="eyebrow">Mission Team</span>
+        <h1>About this project</h1>
+        <p>
+            UFO Predictor is a focused experiment in translating geospatial ML into a cinematic web experience.
+        </p>
+        <p>
+            Built with Flask and scikit-learn, the app is designed to feel exploratory while still delivering practical
+            predictions in one interaction.
+        </p>
+    </div>
+
+    <div class="box box-wide" data-reveal>
+        <span class="eyebrow">Toolchain</span>
         <h3>Made with:</h3>
         <div class="tech-stack">
             <div class="tech-item">
@@ -41,10 +47,7 @@
                 <img src="{{ url_for('static', filename='images/numpy_logo.png') }}" alt="Numpy"><br>Numpy
             </div>
         </div>
+        <a href="{{ url_for('landing') }}" class="btn btn-inline">Back to Home</a>
     </div>
-
-    <p>
-        <a href="{{ url_for('landing') }}" class="btn">Back to Home</a>
-    </p>
 </div>
 {% endblock %}

@@ -2,16 +2,45 @@
 
 {% block content %}
 <div class="landing-hero">
-    <h1 class="landing-title">UFO Predictor</h1>
-    <p class="landing-subtitle">Where are you seeing your next alien?</p>
-    <a href="{{ url_for('prediction_form') }}" class="btn landing-btn ripple-btn">
-        Start Prediction
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.5rem;">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-        </svg> <!-- arrow icon -->
-    </a>
+    <section class="hero-copy" data-reveal>
+        <span class="eyebrow">Orbital Intelligence</span>
+        <h1><span class="landing-title-gradient">Read the sky. Predict the signal.</span></h1>
+        <p>
+            A cinematic machine learning experience for UFO sighting analysis. Feed duration and coordinates, then
+            let the model triangulate the country where that anomaly was most likely reported.
+        </p>
+        <a href="{{ url_for('prediction_form') }}" class="btn landing-btn ripple-btn">
+            Start Prediction
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.45rem;">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </a>
+        <div class="hero-kpis">
+            <div class="kpi" data-reveal>
+                <strong>5</strong>
+                <span>Countries</span>
+            </div>
+            <div class="kpi" data-reveal>
+                <strong>97%</strong>
+                <span>Model Accuracy</span>
+            </div>
+            <div class="kpi" data-reveal>
+                <strong>80K+</strong>
+                <span>Sightings</span>
+            </div>
+        </div>
+    </section>
+
+    <aside class="hero-panel" data-reveal>
+        <span class="eyebrow">Live Telescope Feed</span>
+        <h3>Detection matrix</h3>
+        <p>Signal confidence shifts in real-time as the cosmic background and geolocation context are evaluated.</p>
+        <div class="scanline"></div>
+        <div class="scanline"></div>
+        <div class="scanline"></div>
+    </aside>
 </div>
 
 <script src="{{ url_for('static', filename='js/components/button.js') }}"></script>

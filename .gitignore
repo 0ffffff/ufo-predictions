@@ -1,22 +1,14 @@
 # venv
-/app/.venv
+.venv
 
 # os files
 .DS_Store
-Thumbs.db
 
-# IDEs
+# ide
 .vscode/
 .idea/
+.cursor/
+.claude/
 
 # python
 __pycache__/
-*.py[cod]
-*$py.class
-
-# env vars
-.env
-.env.*
-
-# logs
-*.log

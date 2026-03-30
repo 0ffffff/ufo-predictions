@@ -1,10 +1,16 @@
 <nav>
-    <div class="nav-content">
-        <a href="{{ url_for('landing') }}" class="logo-btn">
+    <div class="nav-content" data-reveal>
+        <a href="{{ url_for('landing') }}" class="nav-brand">
             <img src="{{ url_for('static', filename='images/icon.png') }}" class="logo" alt="UFO Predictor Logo">
+            <span class="brand-text">
+                <span class="brand-title">UFO Predictor</span>
+                <span class="brand-subtitle">Stellar Intelligence Lab</span>
+            </span>
         </a>
-        <a href="{{ url_for('prediction_form') }}"
-            class="{% if request.endpoint in ['prediction_form', 'predict'] %}active{% endif %}">Predict</a>
-        <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a>
+        <div class="nav-links">
+            <a href="{{ url_for('prediction_form') }}"
+                class="{% if request.endpoint in ['prediction_form', 'predict'] %}active{% endif %}">Predict</a>
+            <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a>
+        </div>
     </div>
 </nav>

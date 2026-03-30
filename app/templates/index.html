@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="grid">
+<div class="grid prediction-grid">
 
-  <div class="box">
-
-    <p>According to the number of seconds, latitude and longitude, which country is likely to have reported seeing a UFO?</p>
+  <div class="box" data-reveal>
+    <span class="eyebrow">Prediction Console</span>
+    <h2>Where was this sighting reported?</h2>
+    <p>Input duration and coordinates. The classifier compares your signal against historical patterns and returns the
+      most likely reporting country.</p>
 
     {% from 'components/input.html' import input %}
 
@@ -16,28 +18,28 @@
         {{ input('longitude', 'Longitude', type='text', required=True) }}
       </div>
 
-      <button type="submit" class="btn">Predict!</button>
+      <button type="submit" class="btn">Run Analysis</button>
     </form>
 
     {% if country %}
     <div class="prediction-result">
-      <p>{{ prediction_text }}</p>
+      <p>Prediction result</p>
       <h3>{{ country }}</h3>
     </div>
     {% endif %}
 
   </div>
 
-  <div class="box">
+  <div class="box" data-reveal>
+    <span class="eyebrow">Mission Notes</span>
     <h3>How to use</h3>
-    <p>To predict the country of a UFO sighting, enter the duration in seconds (0-60) and the geographical coordinates (latitude and longitude) of the event. Our model will analyze the input to determine the most likely reporting country.</p>
-    <p>For example, if you enter 30 seconds, 40.7128 latitude, and -74.0060 longitude, the model will predict that the UFO sighting is most likely to have been reported in the United States.</p>
-  </div>
-
-  <div class="box">
-    <h3>Model</h3>
-    <p>Our model is a logistic regression model that was trained on a dataset of UFO sightings. The model takes the duration in seconds and the geographical coordinates (latitude and longitude) of the event as input and outputs the most likely reporting country.</p>
-    <p>The model was trained using scikit-learn and the dataset was obtained from the UFO Sightings dataset on Kaggle.</p>
+    <p>Use duration from <strong>0-60 seconds</strong> and real-world latitude/longitude values. Results are immediate
+      and designed for quick exploration.</p>
+    <h3>Model details</h3>
+    <p>The prediction engine is logistic regression, trained in scikit-learn with UFO sightings sourced from Kaggle.
+      Input features are sighting duration, latitude, and longitude.</p>
+    <p>Try this sample case: <strong>30</strong>, <strong>40.7128</strong>, <strong>-74.0060</strong> for a likely U.S.
+      classification.</p>
   </div>
 
 </div>
