@@ -113,14 +113,10 @@ Example inputs for a New York City area point:
 1. Go to `/prediction`.
 2. Enter **Seconds**: `30`, **Latitude**: `40.7128`, **Longitude**: `-74.0060`.
 3. Submit the form.
-4. The app should predict **United States** (coordinates are highly informative for this task).
+4. The app should predict **United States**.
 
 ## Retraining the model
 
 1. Open `train.ipynb` in Jupyter or VS Code. **Run it with the working directory set to the repository root** so `data/raw/ufos.csv` and `model/ufo-model.pkl` resolve correctly.
 2. Run all cells. The notebook filters rows (non-null country, duration between 1 and 60 seconds), encodes countries, trains logistic regression, evaluates on a test split, and writes **`model/ufo-model.pkl`**.
 3. Restart the Flask app if it is already running so it picks up a replaced model file.
-
-## Acknowledgments
-
-Thanks to the Kaggle UFO sightings dataset contributors. Personal thanks to family for support on this project.
